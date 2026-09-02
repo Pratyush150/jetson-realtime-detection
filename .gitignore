@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.installed.cfg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# Model weights and engines - never commit these
+*.pt
+*.onnx
+*.engine
+*.plan
+*.hef
+*.trt
+*.wts
+*.weights
+
+# Captured media and run output
+*.mp4
+*.avi
+*.mkv
+*.jpg
+*.jpeg
+*.png
+*.ppm
+*.jsonl
+examples/output/
+benchmarks/results/
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# ROS 2 workspace artifacts
+build/
+install/
+log/

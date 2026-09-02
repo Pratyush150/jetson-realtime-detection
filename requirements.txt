@@ -1,0 +1,39 @@
+# Required. This is the whole hard dependency list.
+numpy>=1.20
+
+# ---------------------------------------------------------------------------
+# Everything below is OPTIONAL. The package imports and the full test suite
+# passes with none of it installed. Install what your board actually has.
+# ---------------------------------------------------------------------------
+
+# Video I/O, video writing, JPEG encoding, faster resize.
+# On Jetson, prefer the OpenCV that ships with JetPack (it is built with
+# GStreamer and CUDA support); pip's opencv-python is not.
+# opencv-python>=4.5
+
+# Portable inference. Install the build that matches your accelerator:
+#   onnxruntime          - CPU (Raspberry Pi, laptops)
+#   onnxruntime-gpu      - CUDA / TensorRT execution providers
+# onnxruntime>=1.12
+
+# Optimal assignment for the tracker. A self-contained Hungarian
+# implementation is used when scipy is absent; the test suite verifies the two
+# agree.
+# scipy>=1.7
+
+# PyTorch path. Convenient for validation, not the fast path on a Jetson.
+# ultralytics>=8.0
+
+# TensorRT and pycuda come from JetPack on Jetson - do not pip install them
+# there. On x86 they come from NVIDIA's wheels.
+# tensorrt
+# pycuda
+
+# Hailo-8 / Hailo-8L. HailoRT is installed from Hailo's own packages, not PyPI.
+# hailo-platform
+
+# ROS 2 (rclpy, vision_msgs, cv_bridge) comes from apt inside a ROS install:
+#   sudo apt install ros-$ROS_DISTRO-vision-msgs ros-$ROS_DISTRO-cv-bridge
+
+# Tests.
+# pytest>=7.0
