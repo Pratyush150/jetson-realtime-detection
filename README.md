@@ -42,6 +42,25 @@ together and tested.
 | Different hardware per board | Backend registry with runtime capability probing that **logs why** it chose what it chose |
 | Headless board | Stdlib-only MJPEG server — view it from a laptop browser, no extra dependencies |
 
+## Screenshots
+
+All four came from running this repository on this machine against real data:
+KITTI raw sequence `2011_09_30_drive_0027` and COCO val2017, with a YOLOv8n
+ONNX model on the ONNX Runtime CPU backend. No TensorRT or Hailo hardware was
+present, so no numbers from those backends are shown.
+
+![Grayscale street scene with eleven coloured detection boxes carrying track IDs](docs/screenshots/kitti-tracking.jpg)
+YOLOv8n detections with SORT track IDs on KITTI raw sequence `2011_09_30_drive_0027`, drawn by `edgevision-run`; a `~N` suffix marks a track the tracker is coasting on prediction because the detector skipped that frame.
+
+![Outdoor picnic scene with nine detection boxes across five object classes](docs/screenshots/coco-detections.jpg)
+The same pipeline on one COCO val2017 photograph (`000000142620`) at a 0.35 confidence threshold: nine detections across five classes (person, bench, three bottles, three cups, one bowl).
+
+![Terminal table of per-stage latency percentiles from edgevision-bench](docs/screenshots/backend-latency-profile.png)
+`edgevision-bench` over 120 timed KITTI frames after 15 discarded warmup frames: preprocess, inference and postprocess latency at p50/p90/p99, plus the warning it raises when the p99/p50 jitter ratio goes above 2.
+
+![Terminal output showing pipeline stage timings and the chosen skip interval](docs/screenshots/pipeline-adaptive-skip.png)
+`edgevision-run` over 120 KITTI frames: from a measured 78.6 ms of inference the adaptive skipper chose to detect every third frame, and the pipeline held 32.3 fps of output while the detector touched 34% of frames.
+
 ## Quickstart
 
 ```bash

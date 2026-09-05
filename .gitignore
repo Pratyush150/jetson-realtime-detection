@@ -57,3 +57,7 @@ benchmarks/results/
 build/
 install/
 log/
+
+# Screenshots committed for the README are the exception to the media rules above.
+!docs/screenshots/*.png
+!docs/screenshots/*.jpg
